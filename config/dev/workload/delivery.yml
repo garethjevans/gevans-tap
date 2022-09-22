@@ -16,7 +16,7 @@ spec:
     metadata:
       annotations:
         boot.spring.io/actuator: http://:8081/actuator
-        boot.spring.io/version: 2.6.9
+        boot.spring.io/version: 2.7.3
         conventions.carto.run/applied-conventions: |-
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
@@ -30,7 +30,7 @@ spec:
           appliveview-sample/app-live-view-appflavours-boot
           appliveview-sample/app-live-view-systemproperties
         developer.conventions/target-containers: workload
-        services.conventions.apps.tanzu.vmware.com/mysql: mysql-connector-java/8.0.29
+        services.conventions.apps.tanzu.vmware.com/mysql: mysql-connector-java/8.0.30
         services.conventions.apps.tanzu.vmware.com/postgres: postgresql/42.3.6
       labels:
         app.kubernetes.io/component: run
@@ -50,7 +50,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: gcr.io/rawlingsj/workload-dev@sha256:ab37651d3e5967c0b120a4bdcab880e14de84cc66bd319b8e8952eeab770ad0b
+        image: gcr.io/rawlingsj/workload-dev@sha256:2f322b4184cadb555c96f0f82692477f31ba7a3bc28cf691bbc89dfa002665c8
         livenessProbe:
           httpGet:
             path: /livez
