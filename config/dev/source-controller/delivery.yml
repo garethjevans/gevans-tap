@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: source-controller
+  annotations:
+    kapp.k14s.io/update-strategy: fallback-on-replace
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+  labels:
+    app.kubernetes.io/part-of: source-controller
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/workload-type: worker
+    app.kubernetes.io/component: run
+    carto.run/workload-name: source-controller
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: run
+      app.kubernetes.io/part-of: source-controller
+      apps.tanzu.vmware.com/has-tests: "true"
+      apps.tanzu.vmware.com/workload-type: worker
+      carto.run/workload-name: source-controller
+  template:
+    metadata:
+      annotations:
+        conventions.carto.run/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"source-controller","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"worker"},"name":"source-controller","namespace":"dev"},"spec":{"params":[{"name":"testing_pipeline_matching_labels","value":{"apps.tanzu.vmware.com/pipeline":"golang"}}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/vmware-tanzu/source-controller"}}}}
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: source-controller
+        apps.tanzu.vmware.com/has-tests: "true"
+        apps.tanzu.vmware.com/workload-type: worker
+        carto.run/workload-name: source-controller
+    spec:
+      containers:
+      - image: gcr.io/rawlingsj/source-controller-dev@sha256:f8ae2f0098d64862ad73b3cf8d8d9693072cc62efb23134fbb9045e8663a4521
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
