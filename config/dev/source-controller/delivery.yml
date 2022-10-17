@@ -34,7 +34,7 @@ spec:
         carto.run/workload-name: source-controller
     spec:
       containers:
-      - image: gcr.io/rawlingsj/source-controller-dev@sha256:af285efd94a477915f5e45374ce80d7b0261eb843414da094f79c43d02dc35bf
+      - image: gcr.io/rawlingsj/source-controller-dev@sha256:9d512f58440b86afa0685772a0efcf39c326d0202a1f71b0b32b121afc63b103
         name: workload
         resources: {}
         securityContext:
