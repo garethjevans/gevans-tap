@@ -34,7 +34,7 @@ spec:
         carto.run/workload-name: tekton
     spec:
       containers:
-      - image: gcr.io/rawlingsj/tekton-dev@sha256:7bfa8258027f11c2704ab7436c960ccf83930c0c55f63d77c7ea7dd6be3d4406
+      - image: gcr.io/rawlingsj/tekton-dev@sha256:177413ae5be9f6af5478a8be389fb8d12db1c6e85d57e3d8a238ea30e36a9f6d
         name: workload
         resources: {}
         securityContext:
