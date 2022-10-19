@@ -34,7 +34,7 @@ spec:
         carto.run/workload-name: fake-jenkins
     spec:
       containers:
-      - image: gcr.io/rawlingsj/fake-jenkins-dev@sha256:5be548edd22ea38bbf790deefe7dedcf8c588d28d7e89480931d8aebae6ee64e
+      - image: gcr.io/rawlingsj/fake-jenkins-dev@sha256:b8d7932ace8da502222f35081fbc2e66eee21277e46922fed610a37d3d5b483c
         name: workload
         resources: {}
         securityContext:
